@@ -18,7 +18,7 @@ const QuestionDetails = () => {
     const dispatch = useDispatch();
     const User = useSelector((state) => state.currentUserReducer);
     const location = useLocation();
-    const url = "https://localhost:5000";
+    const url = "https://stack-overflow-bypaddy.netlify.app";
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
         if (User === null) {
