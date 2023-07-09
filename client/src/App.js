@@ -6,11 +6,13 @@ import { useDispatch} from 'react-redux';
 import { fetchAllQuestions } from './actions/question';
 import { useEffect } from 'react';
 import {fetchAllUsers} from './actions/users'
+import { fetchAllPosts } from './actions/post';
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllQuestions());
+    dispatch(fetchAllPosts());
     dispatch(fetchAllUsers());
   }, [dispatch]);
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import "./Leftsidebar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
-
 function Leftsidebar() {
+
+
   return (
     <div className='left-sidebar'>
         <nav className="side-nav">
@@ -18,16 +19,15 @@ function Leftsidebar() {
             <p>PUBLIC</p>
           </div>
           
-            <NavLink
-              to="/Questions"
-              className="side-nav-links"
-              activeclassname="active"
-            >
+            <NavLink to="/Questions" className="side-nav-links" activeclassname="active">
               <img src={Globe} alt="Globe" />
               <p style={{ paddingLeft: "10px" }}> Questions </p>
             </NavLink>
-          
-          
+
+            <NavLink to="/feed" className="side-nav-links" activeclassname="active">
+              <p style={{ paddingLeft: "30px" }}>Feed</p>
+            </NavLink>
+
             <NavLink
               to="/Tags"
               className="side-nav-links"

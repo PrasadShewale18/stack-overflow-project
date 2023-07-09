@@ -17,7 +17,7 @@ export const fetchAllQuestions = () => async (disptach) => {
     disptach({ type: "FETCH_ALL_QUESTIONS", payload: data });
   } catch (error) {
     console.log(error);
-  }
+  } 
 };
 
 export const deleteQuestion = (id, navigate) => async (dispatch) => {

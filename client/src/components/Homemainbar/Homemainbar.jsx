@@ -78,11 +78,12 @@ function Homemainbar() {
     //     }]
     // }]
     const questionsList = useSelector((state) => state.questionsReducer);
+    const currentUser = useSelector((state) => state.currentUserReducer);
     const location = useLocation()
     const user = 1
     const navigate =  useNavigate()
     const checkAuth = ()=>{
-        if(user===null)
+        if(currentUser===null)
         {
             alert("login or signup to ask questions")
             navigate('/Auth')

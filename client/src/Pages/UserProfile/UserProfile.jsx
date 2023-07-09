@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { useParams } from "react-router";
+import {useNavigate} from 'react-router-dom'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBirthdayCake, faPen } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
@@ -10,6 +12,7 @@ import Avatar from "../../components/Avatar/Avatar";
 import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import "./UsersProfile.css";
+import { addFriend ,delFriend} from "../../actions/users";
 
 const UserProfile = ({ slideIn, handleSlideIn }) => {
   const { id } = useParams();
@@ -17,6 +20,31 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
   const currentProfile = users.filter((user) => user._id === id)[0];
   const currentUser = useSelector((state) => state.currentUserReducer);
   const [Switch, setSwitch] = useState(false);
+  const Navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const updateFriend = ()=>{
+    if(currentUser ===  null)
+    {
+      alert("Login to add friends");
+      Navigate("/Auth");
+    }
+    else
+    {dispatch(addFriend(id,currentUser?.result?._id));
+      }
+  }
+
+  const deleteFriend = ()=>{
+    console.log(currentUser);
+    if(currentUser === null)
+    {
+      alert("Login to add friends");
+      Navigate("/Auth");
+    }
+    else
+    {dispatch(delFriend(id,currentUser?.result?._id));
+      }
+  }
 
   return (
     <div className="home-container-1">
@@ -42,7 +70,13 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
                 </p>
               </div>
             </div>
-            {currentUser?.result._id === id && (
+            {currentUser?.result?._id !== id && (currentUser?.result?.friends.findIndex((element) => element === id) === -1?
+          <button  className='add-btn' onClick={()=>updateFriend()}>+ Add Friend</button>:
+          <button  className='add-btn' onClick={()=>deleteFriend()}>- Delete Friend</button>)}
+
+
+            {currentUser?.result?._id === id && 
+            (
               <button
                 type="button"
                 onClick={() => setSwitch(true)}

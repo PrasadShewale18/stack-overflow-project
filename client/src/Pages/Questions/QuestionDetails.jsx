@@ -11,14 +11,14 @@ import './Questions.css'
 import DisplayAnswer from './DisplayAnswer';
 import { postAnswer,deleteQuestion,voteQuestion} from '../../actions/question';
 const QuestionDetails = () => {
-    const { id } = useParams()
+    const { id } = useParams();
     const questionsList = useSelector((state) => state.questionsReducer);
     const [Answer, setAnswer] = useState("");
     const Navigate = useNavigate();
     const dispatch = useDispatch();
     const User = useSelector((state) => state.currentUserReducer);
     const location = useLocation();
-    const url = "http://localhost:3000";
+    const url = "https://localhost:5000";
     const handlePostAns = (e, answerLength) => {
         e.preventDefault();
         if (User === null) {

@@ -8,6 +8,9 @@ import DisplayQuestions from './Pages/Questions/DisplayQuestions'
 import Tags from './Pages/Tags/Tags'
 import Users from './Pages/Users/Users'
 import UserProfile from './Pages/UserProfile/UserProfile'
+import Feed from './Pages/Feed/feed'
+import FeedForm from './Pages/Feed/feedForm'
+import SingleFeed from './Pages/Feed/singleFeed'
 
 function AllRoutes () {
   return (
@@ -20,6 +23,9 @@ function AllRoutes () {
         <Route exact path="/Tags" element={<Tags/>}/>
         <Route exact path="/Users" element={<Users/>}/>
         <Route exact path="/Users/:id" element={<UserProfile/>}/>
+        <Route exact path="/feed" element={<Feed/>}/>
+        <Route exact path="/feed/:id" element={<SingleFeed/>}/>
+        <Route exact path="/uploadFeed" element={<FeedForm/>}/>
     </Routes>
   )
 }
